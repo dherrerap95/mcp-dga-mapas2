@@ -1,0 +1,23 @@
+# Documentación interna y memoria: solo se versionan las excepciones autorizadas
+CLAUDE.md
+*.md
+!README.md
+!SECURITY.md
+memoria/
+respaldos/
+
+# Datos: se publican como Release, no en git
+datos/
+*.zip
+
+# Node y Wrangler
+node_modules/
+.wrangler/
+.dev.vars*
+.env*
+
+# Python
+__pycache__/
+*.pyc
+.ruff_cache/
+.venv/
