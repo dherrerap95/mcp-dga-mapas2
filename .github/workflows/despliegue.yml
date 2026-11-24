@@ -66,6 +66,17 @@ jobs:
       - name: Instalar dependencias
         working-directory: servidor
         run: npm ci
+      - name: Crear el Worker si todavía no existe
+        working-directory: servidor
+        run: |
+          nombre=$(grep -oP '"name":\s*"\K[^"]+' wrangler.jsonc)
+          estado=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/$nombre/settings")
+          if [ "$estado" = "404" ]; then
+            echo "El Worker $nombre no existe: se crea con una página de servicio en preparación"
+            npx wrangler deploy --config inicial/wrangler.jsonc
+          else
+            echo "El Worker $nombre ya existe (HTTP $estado)"
+          fi
       - name: Subir versión sin activarla
         id: subir
         working-directory: servidor
