@@ -67,7 +67,13 @@ def main():
     g["identificado"] = ~g["nombre"].str.startswith("Parámetro sin identificar")
     destino = comun.RAIZ / "parametros" / "parametros_calidad.csv"
     if destino.exists() and "--forzar" not in sys.argv:
-        sys.exit(f"  {destino.name} ya existe y puede tener ediciones a mano; usar --forzar para regenerarlo")
+        actual = pd.read_csv(destino, sep=";", dtype=str, keep_default_na=False, encoding="utf-8-sig")
+        nuevos = g[~g["cod_param"].isin(actual["cod_param"])].astype(str)
+        if nuevos.empty:
+            print(f"  {destino.name} sin códigos nuevos; se conserva tal como está")
+            return
+        g = pd.concat([actual, nuevos[actual.columns]], ignore_index=True)
+        print(f"  {len(nuevos)} códigos nuevos agregados al final de lo editado: {', '.join(nuevos['cod_param'])}")
     g.sort_values("cod_param", key=lambda c: c.astype(int)).to_csv(destino, sep=";", index=False, encoding="utf-8-sig")
     print(f"  {len(g)} parámetros, {int((g['regla'] != '').sum())} con rótulo corregido, "
           f"{int((g['regla'] == 'P4').sum())} sin nombre en los datos, {int((~g['identificado']).sum())} sin identificar")

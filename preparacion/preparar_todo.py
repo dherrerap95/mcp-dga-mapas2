@@ -3,7 +3,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-PASOS = ["leer_mapas2.py", "corregir_diarias.py", "corregir_irregulares.py", "corregir_calidad.py", "estaciones.py",
+PASOS = ["leer_mapas2.py", "catalogo_parametros.py", "corregir_diarias.py", "corregir_irregulares.py", "corregir_calidad.py", "estaciones.py",
          "convertir_mapas2.py", "validar_mapas2.py", "muestra_mapas2.py"]
 
 

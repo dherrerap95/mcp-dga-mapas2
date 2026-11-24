@@ -49,7 +49,7 @@
       "descripcion": "Temperatura media diaria"
     },
     "pozos": {
-      "archivo": "niveles_estaticos_pozos_historico/niveles_estaticos_pozos_historico.txt",
+      "archivo": "niveles_estaticos_pozos_historico.zip",
       "formato": "irregular",
       "fecha": "Fecha",
       "valor": "Nivel",
@@ -72,7 +72,7 @@
       "descripcion": "Concentración de sedimentos en suspensión (muestreo rutinario)"
     },
     "calidad": {
-      "archivo": "calidad_agua_historico/calidad_agua_historico.txt",
+      "archivo": "calidad_agua_historico.zip",
       "formato": "calidad",
       "descripcion": "Calidad de aguas superficiales y subterráneas"
     }
@@ -91,5 +91,52 @@
       "04522005",
       "04302011"
     ]
+  },
+  "noticias": {
+    "rss": "https://dga.mop.gob.cl/feed/",
+    "temas": {
+      "Caudales y crecidas": [
+        "caudal",
+        "crecida",
+        "deshielo",
+        "fluviometr",
+        "desborde"
+      ],
+      "Precipitaciones y nieve": [
+        "precipitacion",
+        "lluvia",
+        "nieve",
+        "sistema frontal",
+        "rio atmosferico"
+      ],
+      "Temperatura y glaciares": [
+        "temperatura",
+        "ola de calor",
+        "glaciar"
+      ],
+      "Sequía y decretos de escasez": [
+        "escasez hidrica",
+        "zona de escasez",
+        "decreto de escasez",
+        "sequia",
+        "deficit"
+      ],
+      "Calidad de aguas y contaminación": [
+        "calidad de agua",
+        "calidad del agua",
+        "contaminacion",
+        "contaminante",
+        "derrame",
+        "arsenico"
+      ],
+      "Aguas subterráneas y embalses": [
+        "pozo",
+        "acuifero",
+        "agua subterranea",
+        "aguas subterraneas",
+        "embalse",
+        "lago"
+      ]
+    }
   }
 }
