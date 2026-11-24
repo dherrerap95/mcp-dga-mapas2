@@ -4,7 +4,7 @@
   "procesados": "datos/procesados/mapas2",
   "revision": "../datos/revision_mapas2/correcciones",
   "catalogo_pagina": "catalogo_estaciones_pagina.json",
-  "fecha_descarga": "2026-11-22",
+  "fecha_descarga": "2026-11-24",
   "url": "https://mapas2.mop.gob.cl",
   "cita": "Dirección General de Aguas (DGA), Ministerio de Obras Públicas. Mapas DGA. https://mapas2.mop.gob.cl",
   "informes": {
