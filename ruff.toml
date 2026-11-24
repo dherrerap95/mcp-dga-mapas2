@@ -1,4 +1,4 @@
 target-version = "py310"
 
 [lint.isort]
-known-first-party = ["comun", "corregir_irregulares"]
+known-first-party = ["comun", "conftest", "corregir_calidad", "corregir_diarias", "corregir_irregulares"]
