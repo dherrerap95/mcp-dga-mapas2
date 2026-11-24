@@ -42,7 +42,7 @@ import {
 } from "./datos";
 
 const AUTOR = "Diego Herrera Pino";
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const ANOTACIONES = { readOnlyHint: true, openWorldHint: false } as const;
 const TODAS = ["caudal", "prep", "tmin", "tmax", "tmed", "pozos", "sed_integrado", "sed_rutinario", "calidad"] as const;
 const NOMBRE_ESTADO = ["", "corregido", "eliminado", "dudoso"];
@@ -269,7 +269,7 @@ function crearServidor(env: Env): McpServer {
         unidad(v),
         r!.inicio,
         r!.fin,
-        r!.n_mediciones !== undefined ? (r!.n_validos !== undefined ? `${r!.n_validos} de ${r!.n_mediciones} mediciones` : `${r!.n_mediciones} mediciones`) : `${r!.n_validos} días`,
+        r!.n_mediciones !== undefined ? (r!.n_validos !== undefined ? `${r!.n_validos} de ${cuenta(r!.n_mediciones, "medición", "mediciones")}` : cuenta(r!.n_mediciones, "medición", "mediciones")) : cuenta(r!.n_validos ?? 0, "día", "días"),
         r!.pct_faltante !== undefined ? num(r!.pct_faltante, 1) : "",
         r!.corregidos,
         r!.eliminados,
@@ -390,7 +390,7 @@ function crearServidor(env: Env): McpServer {
         const est = contarEstados(Uint8Array.from(meds.map((m) => m.estado)));
         return texto(
           env,
-          `# ${titulo} en ${e.nombre} (${e.codigo})\n${descripcion}. ${meds.length} mediciones entre ${isoDeDia(meds[0].dia)} y ${isoDeDia(meds.at(-1)!.dia)}${p !== "mediciones" ? "; las medias excluyen valores eliminados" : ""}. ${notaEstados(est)}\n\n${tabla(cab, hoja)}${aviso}`,
+          `# ${titulo} en ${e.nombre} (${e.codigo})\n${descripcion}. ${cuenta(meds.length, "medición", "mediciones")} entre ${isoDeDia(meds[0].dia)} y ${isoDeDia(meds.at(-1)!.dia)}${p !== "mediciones" ? "; las medias excluyen valores eliminados" : ""}. ${notaEstados(est)}\n\n${tabla(cab, hoja)}${aviso}`,
         );
       }
       if (parametro || incluir_dinamicos !== undefined || profundidad !== undefined) return error("parametro, incluir_dinamicos y profundidad solo aplican a calidad y pozos.");
@@ -462,7 +462,7 @@ function crearServidor(env: Env): McpServer {
       const comp = completitud(variable);
       const partes = [
         `# Estadísticas de ${variable} en ${e.nombre} (${e.codigo})`,
-        `${meta.descripcion}. Período ${isoDeDia(s.inicio)} a ${isoDeDia(s.inicio + s.valores.length - 1)}; ${val} días con dato (${num(100 * (1 - val / s.valores.length), 1)}% sin dato). Año ${mi === 1 ? "calendario" : `desde el mes ${mi}`}; un mes entra con al menos ${comp * 100}% de días con dato y un año con sus doce meses válidos. ${notaEstados(contarEstados(s.estados))}`,
+        `${meta.descripcion}. Período ${isoDeDia(s.inicio)} a ${isoDeDia(s.inicio + s.valores.length - 1)}; ${cuenta(val, "día", "días")} con dato (${num(100 * (1 - val / s.valores.length), 1)}% sin dato). Año ${mi === 1 ? "calendario" : `desde el mes ${mi}`}; un mes entra con al menos ${comp * 100}% de días con dato y un año con sus doce meses válidos. ${notaEstados(contarEstados(s.estados))}`,
       ];
       const desc = validosDesc(s.valores);
       partes.push(`Media diaria de los días con dato: ${num(desc.reduce((x, y) => x + y, 0) / desc.length)} ${u}.`);
@@ -473,7 +473,7 @@ function crearServidor(env: Env): McpServer {
         const ua = meta.agregacion === "suma" ? `${u}/año` : u;
         const fMin = anual.find((f) => f.valor === ea.min)!, fMax = anual.find((f) => f.valor === ea.max)!;
         partes.push(
-          `## Valores anuales (${ea.n} años completos)\n${tabla(["media", "desv. estándar", "CV", "mínimo (año)", "máximo (año)"], [[`${num(ea.media)} ${ua}`, num(ea.desv), num(ea.desv / ea.media, 2), `${num(ea.min)} (${fMin.etiqueta})`, `${num(ea.max)} (${fMax.etiqueta})`]])}`,
+          `## Valores anuales (${cuenta(ea.n, "año completo", "años completos")})\n${tabla(["media", "desv. estándar", "CV", "mínimo (año)", "máximo (año)"], [[`${num(ea.media)} ${ua}`, num(ea.desv), num(ea.desv / ea.media, 2), `${num(ea.min)} (${fMin.etiqueta})`, `${num(ea.max)} (${fMax.etiqueta})`]])}`,
         );
       } else {
         partes.push("No hay años con sus doce meses válidos en el período.");
@@ -495,7 +495,7 @@ function crearServidor(env: Env): McpServer {
         if (emx) {
           const xMax = ext.reduce((p, x) => (x.max > p.max ? x : p));
           const titulo = variable === "prep" ? "Máxima precipitación diaria de cada año calendario" : "Máximo caudal diario de cada año calendario";
-          partes.push(`## ${titulo} (${ext.length} años)\n${tabla(["media", "desv. estándar", "máximo del período (fecha)"], [[num(emx.media), num(emx.desv), `${num(xMax.max)} (${xMax.fechaMax})`]])}`);
+          partes.push(`## ${titulo} (${cuenta(ext.length, "año", "años")})\n${tabla(["media", "desv. estándar", "máximo del período (fecha)"], [[num(emx.media), num(emx.desv), `${num(xMax.max)} (${xMax.fechaMax})`]])}`);
         }
       }
       return texto(env, partes.join("\n\n"));
@@ -532,7 +532,7 @@ function crearServidor(env: Env): McpServer {
       for (const i of idx) if (s.observaciones[i]) conteoObs.set(obs[s.observaciones[i]], (conteoObs.get(obs[s.observaciones[i]]) ?? 0) + 1);
       const partes = [
         `# Niveles del pozo ${e.nombre} (${e.codigo})`,
-        `${idx.length} mediciones entre ${isoDeDia(s.fechas[idx[0]])} y ${isoDeDia(s.fechas[idx.at(-1)!])}; ${usar.length} niveles ${incluir_dinamicos ? "con valor" : "estáticos con valor"}. Observaciones: ${conteoObs.size ? [...conteoObs].map(([k, v]) => `${k} ${v}`).join(", ") : "ninguna"}. ${notaEstados(contarEstados(Uint8Array.from(idx.map((i) => s.estados[i]))))}`,
+        `${cuenta(idx.length, "medición", "mediciones")} entre ${isoDeDia(s.fechas[idx[0]])} y ${isoDeDia(s.fechas[idx.at(-1)!])}; ${incluir_dinamicos ? cuenta(usar.length, "nivel con valor", "niveles con valor") : cuenta(usar.length, "nivel estático con valor", "niveles estáticos con valor")}. Observaciones: ${conteoObs.size ? [...conteoObs].map(([k, v]) => `${k} ${v}`).join(", ") : "ninguna"}. ${notaEstados(contarEstados(Uint8Array.from(idx.map((i) => s.estados[i]))))}`,
       ];
       if (usar.length) {
         const v = usar.map((i) => s.valores[i]);
@@ -557,7 +557,7 @@ function crearServidor(env: Env): McpServer {
       const n = mediciones ?? 20;
       if (n > 0) {
         const ult = idx.slice(-n).reverse().map((i) => [isoDeDia(s.fechas[i]), num(s.valores[i]), obs[s.observaciones[i]], NOMBRE_ESTADO[s.estados[i]]]);
-        partes.push(`## Últimas ${ult.length} mediciones\n${tabla(["fecha", "nivel (m)", "observación", "estado"], ult)}`);
+        partes.push(`## ${ult.length === 1 ? "Última medición" : `Últimas ${ult.length} mediciones`}\n${tabla(["fecha", "nivel (m)", "observación", "estado"], ult)}`);
       }
       return texto(env, partes.join("\n\n"));
     },
@@ -603,7 +603,7 @@ function crearServidor(env: Env): McpServer {
             const p = cat.parametros[ip];
             return [p.codigo, p.nombre, p.unidad, is.length, `${isoDeDia(q.fechas[is[0]])} a ${isoDeDia(q.fechas[is.at(-1)!])}`, is.filter((i) => cal[q.calificadores[i]] === "<").length];
           });
-        return texto(env, `${titulo}\n${todos.length} mediciones de ${g.size} parámetros.\n\n${tabla(["código", "parámetro", "unidad", "mediciones", "período", "bajo límite de detección"], filas.slice(0, maxFilas))}`);
+        return texto(env, `${titulo}\n${cuenta(todos.length, "medición", "mediciones")} de ${cuenta(g.size, "parámetro", "parámetros")}.\n\n${tabla(["código", "parámetro", "unidad", "mediciones", "período", "bajo límite de detección"], filas.slice(0, maxFilas))}`);
       }
       const cods = codigosParametro(cat, parametro);
       const ips = cods.map((c) => cat.parametros.findIndex((p) => p.codigo === c));
@@ -620,7 +620,7 @@ function crearServidor(env: Env): McpServer {
         const ult = validos.at(-1);
         const limites = bajo.map((i) => q.valores[i]);
         partes.push(
-          `## ${p.nombre} (código ${p.codigo}, ${p.unidad || "unidad no informada"})${p.metodologia ? `, metodología ${p.metodologia}` : ""}\n${is.length} mediciones entre ${isoDeDia(q.fechas[is[0]])} y ${isoDeDia(q.fechas[is.at(-1)!])}; ${bajo.length} bajo el límite de detección${limites.length ? ` (límites entre ${num(Math.min(...limites))} y ${num(Math.max(...limites))})` : ""}. ${notaEstados(contarEstados(Uint8Array.from(is.map((i) => q.estados[i]))))}\n\n${tabla(
+          `## ${p.nombre} (código ${p.codigo}, ${p.unidad || "unidad no informada"})${p.metodologia ? `, metodología ${p.metodologia}` : ""}\n${cuenta(is.length, "medición", "mediciones")} entre ${isoDeDia(q.fechas[is[0]])} y ${isoDeDia(q.fechas[is.at(-1)!])}; ${bajo.length} bajo el límite de detección${limites.length ? ` (límites entre ${num(Math.min(...limites))} y ${num(Math.max(...limites))})` : ""}. ${notaEstados(contarEstados(Uint8Array.from(is.map((i) => q.estados[i]))))}\n\n${tabla(
             ["valores medidos", "mínimo", "mediana", "percentil 90", "máximo", "último valor (fecha)"],
             [[medidos.length, num(medidos.length ? Math.min(...medidos) : null), num(percentil(medidos, 0.5)), num(percentil(medidos, 0.9)), num(medidos.length ? Math.max(...medidos) : null), ult === undefined ? "s/d" : `${cal[q.calificadores[ult]] === "<" ? "<" : ""}${num(q.valores[ult])} (${isoDeDia(q.fechas[ult])})`]],
           )}`,
@@ -630,7 +630,7 @@ function crearServidor(env: Env): McpServer {
       const n = mediciones ?? 10;
       if (n > 0) {
         const filas = sel.slice(-n).reverse().map((i) => [isoDeDia(q.fechas[i]), hora(q.minutos[i]), cat.parametros[q.parametros[i]].codigo, `${cal[q.calificadores[i]] === "<" || cal[q.calificadores[i]] === ">" ? cal[q.calificadores[i]] : ""}${num(q.valores[i])}`, num(q.profundidades[i]), NOMBRE_ESTADO[q.estados[i]]]);
-        partes.push(`## Últimas ${filas.length} mediciones\n${tabla(["fecha", "hora", "código", "valor", "profundidad (m)", "estado"], filas)}`);
+        partes.push(`## ${filas.length === 1 ? "Última medición" : `Últimas ${filas.length} mediciones`}\n${tabla(["fecha", "hora", "código", "valor", "profundidad (m)", "estado"], filas)}`);
       }
       return texto(env, partes.join("\n\n"));
     },
