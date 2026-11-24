@@ -1,0 +1,127 @@
+﻿cod_param;nombre_original;unidad_original;filas;nombre;unidad;regla;metodologia;nota_diccionario;limite_min;limite_max;identificado
+640;HUMEDAD RELATIVA (PSICROMETRO);%;1;HUMEDAD RELATIVA (PSICROMETRO);%;;;;;;True
+5001;Color;U. Pt;1;Color;U Pt-Co;P1;Platino Cobalto;"Color Verdadero; U Pt; NA; Esto fue un error. Pues solo se cargo un dato";;;True
+5009;;;65;Parámetro sin identificar (código 5009);;P4;;;;;False
+5010;;;962;Nitrogeno de amonio;mg/l N-NH4;P4;SM 4500 NH3 BD;"Nitrogeno de amonio; mg/L; N-NH4";;;True
+5011;;;2201;Nitrogeno de amonio;mg/l N-NH4;P4;SM 4500 NH3 BD;"Nitrogeno de amonio; mg/L; N-NH4";;;True
+5013;;;8;Parámetro sin identificar (código 5013);;P4;;;;;False
+5014;;;8;Parámetro sin identificar (código 5014);;P4;;;;;False
+5020;Conductividad Especifica;mhos/cm;83566;Conductividad Especifica;µS/cm;P1;Conductivimetro;"Conductividad específica 25 °C; uS/cm; CE";;;True
+5030;;;3011;Parámetro sin identificar (código 5030);;P4;;;;;False
+5040;Salinidad;g/kg;7;Salinidad;g/kg;;Electrometria;"Salinidad; g/kg; NA; Posiblemente error, muy pocos datos (7 datos)";;;True
+5050;;;391;Compuestos Fenolicos;mg/l;P4;SM 5530 C;"Compuestos Fenolicos; mg/L; NA";;;True
+5100;Solidos Suspendidos Totales;mg/l;689;Solidos Suspendidos Totales;mg/l;;Gravimetria 103-105 °C;"Solidos suspendidos totales; mg/L; NA; Corresponde a lagos y embalses";;;True
+5101;;;434;Solidos suspendidos totales;mg/l;P4;SM 2540 D;"Solidos suspendidos totales; mg/L; NA";;;True
+5104;;;2965;Parámetro sin identificar (código 5104);;P4;;;;;False
+5140;Temperatura del Agua;Grad. C;65970;Temperatura del Agua;°C;P1;Termometro;"Temperatura del agua; °C; NA";-2;45;True
+5160;Turbiedad Nefelometrica;u. nefel;9022;Turbiedad Nefelometrica;UNT;P1;Nefelometría;"Turbiedad; NTU; NA; Corresponde a lagos y embalses";;;True
+5180;Transparencia;metros;719;Transparencia;m;P1;Disco Secchi;"Transparencia; m; NA; Corresponde a lagos y embalses";;;True
+5181;;;8425;Clorofila a;µg/l;P4;?;"Clorofila a; ug/L; NA; Corresponde a lagos y embalses";;;True
+5182;;;2252;Parámetro sin identificar (código 5182);;P4;;;;;False
+5183;;;957;Parámetro sin identificar (código 5183);;P4;;;;;False
+6000;Oxigeno Disuelto;mg/l O2;54041;Oxigeno Disuelto;mg/l O2;;Yodometrico azida - titulacion;"Oxigeno disuelto; mg/L; NA; Se han cargado histricoamente como mg/L independiende de la metodología";0;25;True
+6001;Oxigeno Disuelto;mg/l O2;26792;Oxígeno disuelto (porcentaje de saturación);%;P2;Electrodo de membrana;"Oxigeno disuelto, sat; %; -; Datos desde 2002 en adelante usar % de saturacion de oxígeno disuelto. Antes del año 1989 los datos eran cargados como mg/L Oxígeno disuelto.";0;300;True
+6020;Ph;unid. ph;83573;Ph;unidad de pH;P1;Potenciometrico;"pH; -; Unidad de pH";0;14;True
+6080;Bicarbonato;mg/l;28454;Bicarbonato;mg/l;;Titulacion;"Bicarbonato; mg/L; NA";;;True
+6100;Boro;mg/l B;38602;Boro;mg/l B;;Curcumin colorimetría;"Boro total; mg/L; NA";;;True
+6120;Carbonato;mg/l;25235;Carbonato;mg/l;;Titulacion;"Carbonato; mg/L; NA";;;True
+6141;Cianuro;mg/l CN;669;Cianuro;mg/l CN;;Colorimetría piridina ácido barbiturico;"Cianuro total; mg/L; NA; todos los datos se han cargado en este codigo con esta metodología";;;True
+6182;Cloruro;mg/l Cl;52714;Cloruro;mg/l Cl;;Potenciometrico argentometrico titulacion;"Cloruro total; mg/L; NA; Todos los datos se han cargado con esta metodología";;;True
+6183;;;1459;Cloruro total;mg/l;P4;SM 4110 B;"Cloruro total; mg/L; NA";;;True
+6202;Fluoruro;mg/l F;397;Fluoruro;mg/l F;;Electrodo;"Fluoruro total; mg/L; NA; Dato del 2018 posiblemente es un error";;;True
+6211;;;3;Parámetro sin identificar (código 6211);;P4;;;;;False
+6220;Fosfato;mg/l P;188;Fosfato;mg/l P;;Colorimetria vanadomolibdofosforico;"Fosforo de ortofosfato; mg/L; P-PO4";;;True
+6221;Fosfato;mg/l P;1856;Fosfato;mg/l P;;;;;;True
+6240;Nitrato;mg/l NO3;37185;Nitrato;mg/l NO3;;Espectrofotometria ultravioleta;"Nitrogeno de nitrato; mg/L; N-NO3";;;True
+6241;Nitrato;mg/l NO3;2794;Nitrato;mg/l NO3;;SM 4500 NO3 B;"Nitrogeno de nitrato; mg/L; N-NO3";;;True
+6250;;;3849;Nitrogeno de nitrito + nitrato;mg/l N-(NO3+NO2);P4;Espectrofotometria de absorción atomica;"Nitrogeno de nitrito + nitrato; mg/L; N-(NO3+NO2); Para el calculo del indicador considerar como nitrato";;;True
+6260;Nitrito;mg/l;9490;Nitrito;mg/l;;NED-Dicloruro-Colorimetria;"Nitrogeno de nitrito; mg/L; N-NO2; Se han cargado la mayoría de los datos acá independiente de la metodología";;;True
+6261;;;2304;Nitrogeno de nitrito;mg/l N-NO2;P4;SM 4500 NO B;"Nitrogeno de nitrito; mg/L; N-NO2";;;True
+6280;Nitrogeno Amoniacal;mg/l NO2;1259;Nitrogeno Amoniacal;mg/l NO2;;;;;;True
+6282;Nitrogeno Amoniacal;mg/l NO2;10230;Nitrogeno Amoniacal;mg/l NO2;;Titulación;"Nitrogeno de amonio; mg/L; N-NH4";;;True
+6300;Nitrogeno Organico;mg/l NO2;4;Nitrogeno Organico;mg/l NO2;;Kjeldahl titulacion;"Nitrogeno organico; mg/L; NA; Podría ser un error por la poca cantidad de datos";;;True
+6310;Fosforo total;mg/l PO4;39064;Fosforo total;mg/l PO4;;ácido ascórbico colorimetria;"Fosforo de ortofosfato; mg/L; P-PO4";;;True
+6311;Fosforo total;mg/l PO4;13437;Fosforo total;mg/l PO4;;Espectrometría de absorción molecular;"Fosforo total; mg/L; NA; Hasta la fecha 23/03/2011 los datos fueron cargados como ug/L. Luego de esa fecha fueron cargados como mg/L";;;True
+6321;Silice;mg/l Si;11114;Silice;mg/l Si;;Molibdosilicato colorimetria;"Silice; mg/L; NA";;;True
+6341;Sulfato;mg/l;50548;Sulfato;mg/l;;Turbidimetro;"Sulfato; mg/L; NA";;;True
+6342;;;1458;Sulfato;mg/l;P4;SM 4110 B;"Sulfato; mg/L; NA";;;True
+7020;Demanda Bioquimica de Oxigeno - 5 dias;mg/l O2;2115;Demanda Bioquimica de Oxigeno - 5 dias;mg/l O2;;Incubación;"DBO5; mg/L; NA";;;True
+7040;Demanda Quimica de Oxigeno;mg/l O2;33309;Demanda Quimica de Oxigeno;mg/l O2;;Reflujo dicromato de potasio colorimetria;"DQO; mg/L; NA";;;True
+7080;Coliformes Fecales;nmp/100;206;Coliformes Fecales;NMP/100 ml;P1;Tubos múltiples;"Coliformes fecales; NMP/100mL; NA";;;True
+7082;;;445;Coliformes fecales;NMP/100 ml;P4;SM 9221 E;"Coliformes fecales; NMP/100mL; NA";;;True
+7083;;;6;Parámetro sin identificar (código 7083);;P4;;;;;False
+7084;;;6;Parámetro sin identificar (código 7084);;P4;;;;;False
+7085;;;6;Parámetro sin identificar (código 7085);;P4;;;;;False
+7086;;;6;Parámetro sin identificar (código 7086);;P4;;;;;False
+7100;Coliformes Totales;nmp/100;137;Coliformes Totales;NMP/100 ml;P1;Tubos múltiples;"Coliformes totales; NMP/100mL; NA";;;True
+8000;Dureza (CaCO3);mg/l;19;Dureza (CaCO3);mg/l;;EDTA;"Dureza CaCO3; mg/L; NA";;;True
+8020;Aluminio disuelto;mg/l Al;5;Aluminio disuelto;mg/l Al;;Espectrofotometría de absorción atomica;"Aluminio disuelto; mg/L; NA";;;True
+8021;Aluminio Total;Mg/L Al;23518;Aluminio Total;mg/l Al;P1;Espectrofotometría de absorción atomica;"Aluminio total; mg/L; NA";;;True
+8022;;;1118;Aluminio total;mg/l;P4;ICP-OES;"Aluminio total; mg/L; NA";;;True
+8024;;;6600;Aluminio total;mg/l;P4;Plasma;"Aluminio total; mg/L; NA";;;True
+8025;;;380;Aluminio disuelto;mg/l;P4;Plasma;"Aluminio disuelto; mg/L; NA";;;True
+8041;Arsenico total;mg/l As;48388;Arsenico total;mg/l As;;Manchas de bromuro de mercurio;"Arsénico total; mg/L; NA; Todos los datos se han cargado en este código independiente de la metodología";;;True
+8045;Arsenico total;mg/l As;671;Arsenico total;mg/l As;;Espectrofotometría de absorción atomica;"Arsénico total; mg/L; NA";;;True
+8103;Cadmio total;mg/l Cd;35803;Cadmio total;mg/l Cd;;Espectrofotometría de absorción atomica;"Cadmio total; mg/L; NA";;;True
+8104;;;1088;Cadmio total;mg/l;P4;ICP-OES;"Cadmio total; mg/L; NA";;;True
+8105;;;153;Parámetro sin identificar (código 8105);;P4;;;;;False
+8107;;;4;Parámetro sin identificar (código 8107);;P4;;;;;False
+8108;;;4;Parámetro sin identificar (código 8108);;P4;;;;;False
+8109;;;5;Parámetro sin identificar (código 8109);;P4;;;;;False
+8110;;;4;Parámetro sin identificar (código 8110);;P4;;;;;False
+8111;;;4;Parámetro sin identificar (código 8111);;P4;;;;;False
+8120;Calcio disuelto;mg/l Ca;30799;Calcio disuelto;mg/l Ca;;Permanganato de potasio titulacion;"Calcio total; mg/L; NA; Originalmente este codigo es calcio disuelto, pero realmente los datos son de calcio total.";;;True
+8125;Calcio total;mg/l Ca;24169;Calcio total;mg/l Ca;;Espectrofotometria de absorción atomica;"Calcio total; mg/L; NA";;;True
+8140;Cobre disuelto;mg/l Cu;5;Cobre disuelto;mg/l Cu;;Neocuproina;"Cobre disuelto; mg/L; NA";;;True
+8145;Cobre total;mg/l Cu;55125;Cobre total;mg/l Cu;;Espectrofotometria de absorción atomica;"Cobre total; mg/L; NA";;;True
+8148;;;381;Cobre disuelto;mg/l;P4;Plasma;"Cobre disuelto; mg/L; NA";;;True
+8149;;;145;Cobre total;mg/l;P4;Plasma;"Cobre total; mg/L; NA";;;True
+8150;Cromo Hexavalente Disuelto;mg/l Cr;27;Cromo Hexavalente Disuelto;mg/l Cr;;Espectrofotometria de absorción atomica;"Cromo hexavalente disuelto; mg/L; NA";;;True
+8151;Cromo Hexavalente Total;mg/l Cr;17165;Cromo Hexavalente Total;mg/l Cr;;Espectrofotometria de absorción atomica;"Cromo hexavalente total; mg/L; NA";;;True
+8152;Cromo Hexavalente Disuelto;mg/l Cr;15909;Cromo Hexavalente Disuelto;mg/l Cr;;Colorimetría;"Cromo total; mg/L; NA; Todos los datos de cromo total se han cargado en este código.";;;True
+8153;Cromo Hexavalente Total;mg/l Cr;1168;Cromo Hexavalente Total;mg/l Cr;;ICP-OES;"Cromo total; mg/L; NA";;;True
+8156;;;233;Cromo total;mg/l;P4;Plasma;"Cromo total; mg/L; NA";;;True
+8200;Fierro Disuelto;mg/l Fe;235;Fierro Disuelto;mg/l Fe;;Fenantrolina colorimetria;"Hierro disuelto; mg/L; NA";;;True
+8203;Fierro total;mg/l Fe;53030;Fierro total;mg/l Fe;;Espectrofotometria de absorción atomica;"Hierro total; mg/L; NA";;;True
+8205;;;358;Parámetro sin identificar (código 8205);;P4;;;;;False
+8239;;;4;Parámetro sin identificar (código 8239);;P4;;;;;False
+8240;Litio disuelto;mg/l Li;206;Litio disuelto;mg/l Li;;Fotometría de llama;"Litio disuelto; mg/L; NA";;;True
+8260;Magnesio disuelto;mg/l Mg;30756;Magnesio disuelto;mg/l Mg;;gravimetría;"Magnesio total; mg/L; NA; Originalmente este codigo es magnesio disuelto, pero realmente los datos son de magnesio total.";;;True
+8263;Magnesio total;mg/l Mg;24313;Magnesio total;mg/l Mg;;Espectrofotometria de absorción atomica;"Magnesio total; mg/L; NA";;;True
+8280;Manganeso disuelto;mg/l Mn;5;Manganeso disuelto;mg/l Mn;;Colorimetria persulfato;"Manganeso disuelto; mg/L; NA";;;True
+8281;Manganeso total;mg/l Mn;31914;Manganeso total;mg/l Mn;;Colorimetria persulfato;"Manganeso total; mg/L; NA";;;True
+8282;Manganeso disuelto;mg/l Mn;7;Manganeso disuelto;mg/l Mn;;ICP-OES;"Manganeso total; mg/L; NA";;;True
+8283;Manganeso total;mg/l Mn;7;Manganeso total;mg/l Mn;;ICP-OES;"Manganeso total; mg/L; NA; Originalmente este codigo es manganeso disuelto, pero realmente los datos son de manganeso total.";;;True
+8284;;;355;Manganeso disuelto;mg/l;P4;Plasma;"Manganeso disuelto; mg/L; NA";;;True
+8285;;;10149;Manganeso total;mg/l;P4;Plasma;"Manganeso total; mg/L; NA";;;True
+8300;Mercurio disuelto;mg/l Hg;366;Mercurio disuelto;mg/l Hg;;Ditizona;"Mercurio total; mg/L; NA; Originalmente este codigo es mercurio disuelto, pero realmente los datos son de mercurio total.";;;True
+8303;Mercurio total;mg/l Hg;35711;Mercurio total;mg/l Hg;;Espectrofotometria de absorción atomica;"Mercurio total; mg/L; NA";;;True
+8320;Molibdeno disuelto;mg/l Mo;29683;Molibdeno disuelto;mg/l Mo;;Espectrofotometria de absorción atomica;"Molibdeno total; mg/L; NA";;;True
+8321;;;1068;Molibdeno total;mg/l;P4;ICP-OES;"Molibdeno total; mg/L; NA";;;True
+8340;Niquel disuelto;mg/l Ni;1320;Niquel disuelto;mg/l Ni;;Espectrofotometria de absorción atomica;"Niquel disuelto; mg/L; NA";;;True
+8341;Niquel total;mg/l Ni;34362;Niquel total;mg/l Ni;;Espectrofotometria de absorción atomica;"Niquel total; mg/L; NA";;;True
+8342;;;882;Niquel total;mg/l;P4;ICP-OES;"Niquel total; mg/L; NA";;;True
+8361;Plata total;mg/l Ag;33713;Plata total;mg/l Ag;;Espectrofotometria de absorción atomica;"Plata total; mg/L; NA";;;True
+8380;Plomo disuelto;mg/l Pb;1312;Plomo disuelto;mg/l Pb;;Ditizona-Colorimetria;"Plomo disuelto; mg/L; NA";;;True
+8381;Plomo total;mg/l Pb;2;Plomo total;mg/l Pb;;;;;;True
+8383;Plomo total;mg/l Pb;35521;Plomo total;mg/l Pb;;Espectrofotometria de absorción atomica;"Plomo total; mg/L; NA";;;True
+8384;;;1068;Plomo total;mg/l;P4;ICP-OES;"Plomo total; mg/L; NA";;;True
+8400;Potasio disuelto;mg/l K;31093;Potasio disuelto;mg/l K;;Fotometría de llama;"Potasio total; mg/L; NA; Originalmente este codigo es potasio disuelto, pero realmente los datos son de potasio total.";;;True
+8403;Potasio total;mg/l K;22504;Potasio total;mg/l K;;Espectrofotometria de absorción atomica;"Potasio total; mg/L; NA";;;True
+8420;Selenio disuelto;mg/l Se;22019;Selenio disuelto;mg/l Se;;Diaminobencidina;"Selenio total; mg/L; NA; Originalmente este codigo es selenio disuelto, pero realmente los datos son de selenio total.";;;True
+8422;Selenio disuelto;mg/l Se;8;Selenio disuelto;mg/l Se;;Espectrofotometria de absorción atomica;"Selenio total; mg/L; NA; Originalmente este codigo es selenio disuelto, pero realmente los datos son de selenio total.";;;True
+8423;Selenio total;mg/l Se;8889;Selenio total;mg/l Se;;Espectrofotometria de absorción atomica;"Selenio total; mg/L; NA";;;True
+8440;Sodio disuelto;mg/l;31381;Sodio disuelto;mg/l;;Espectrofotometria de absorción atomica;"Sodio total; mg/L; NA; Originalmente este codigo es sodio disuelto, pero realmente los datos son de sodio total.";;;True
+8441;Sodio total;mg/l Na;23583;Sodio total;mg/l Na;;Espectrofotometria de absorción atomica;"Sodio total; mg/L; NA";;;True
+8460;Zinc disuelto;mg/l Zn;1633;Zinc disuelto;mg/l Zn;;Ditizona;"Zinc disuelto; mg/L; NA";;;True
+8465;Zinc total;mg/l Zn;40252;Zinc total;mg/l Zn;;Espectrofotometria de absorción atomica;"Zinc total; mg/L; NA";;;True
+8466;;;1100;Zinc total;mg/l;P4;ICP-OES;"Zinc total; mg/L; NA";;;True
+8468;;;138;Zinc disuelto;mg/l;P4;Plasma;"Zinc disuelto; mg/L; NA";;;True
+8469;;;138;Zinc total;mg/l;P4;Plasma;"Zinc total; mg/L; NA";;;True
+8501;;;30;Parámetro sin identificar (código 8501);;P4;;;;;False
+9900;;;4083;Nitrogeno Kjeldahl;incierta (µg/l o mg/l);P4;?;"Nitrogeno Kjeldahl; ug/L; NA";;;True
+9901;Nitrógeno Total;mg/l;3912;Nitrógeno Total;mg/l;;?;"Nitrogeno total; ug/L; NA; Los datos desde el 08/08/2016 están expresados en mg/L";;;True
+9902;;;2251;Nitrogeno total;mg/l;P4;SM 4500 D N-org B;"Nitrogeno total; mg/L; NA";;;True
+9911;Cobalto Total;mg/l;32468;Cobalto Total;mg/l;;Espectrofotometria de absorción atomica;"Cobalto total; mg/L; NA";;;True
+9912;;;38;Parámetro sin identificar (código 9912);;P4;;;;;False
+9921;Razon de Absorción de Sodio (RAS);;20195;Razon de Absorción de Sodio (RAS);;;Calculo;"RAS; NA; NA; Adimensional, es una razón.";;;True

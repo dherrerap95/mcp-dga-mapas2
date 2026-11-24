@@ -1,0 +1,26 @@
+# Prueba diaria del servicio público; si falla, GitHub avisa por correo.
+name: Monitoreo
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probar:
+    name: Servicio público
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: servidor/test
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Probar las herramientas en producción
+        run: python servidor/test/probar_mcp.py https://mcp-dga-mapas2.mcp-hidro-chile.workers.dev/mcp

@@ -1,0 +1,89 @@
+# Integración continua: tipos, pruebas, prueba de herramientas MCP, análisis de Python y dependencias.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  WRANGLER_SEND_METRICS: "false"
+
+jobs:
+  servidor:
+    name: Servidor (tipos, pruebas y MCP)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: servidor
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: servidor/package-lock.json
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Revisar tipos
+        run: npm run check
+      - name: Pruebas unitarias
+        run: npm test
+      - name: Auditar dependencias
+        run: npm audit --audit-level=high
+      - name: Levantar el servidor con la muestra de datos
+        run: |
+          npx wrangler dev --assets test/muestra --port 8790 --ip 127.0.0.1 --show-interactive-dev-session=false > wrangler.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://127.0.0.1:8790/ && exit 0
+            sleep 2
+          done
+          cat wrangler.log
+          exit 1
+      - name: Probar las herramientas MCP
+        run: python test/probar_mcp.py http://127.0.0.1:8790/mcp
+      - name: Registro de wrangler
+        if: failure()
+        run: cat wrangler.log || true
+
+  python:
+    name: Python (ruff)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Analizar con ruff
+        run: |
+          python -m pip install ruff==0.17.6
+          ruff check preparacion servidor/test
+
+  dependencias:
+    name: Revisión de dependencias
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          fail-on-severity: high

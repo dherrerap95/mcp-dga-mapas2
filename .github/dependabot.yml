@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /servidor
+    schedule:
+      interval: weekly
+    groups:
+      dependencias-npm:
+        patterns: ["*"]
+  - package-ecosystem: pip
+    directory: /preparacion
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      acciones:
+        patterns: ["*"]

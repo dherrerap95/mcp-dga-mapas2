@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mcp-dga-mapas2",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-24",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "../datos/procesados",
+    "binding": "ASSETS",
+    "run_worker_first": ["/mcp", "/mcp/*"]
+  },
+  "vars": {
+    "MAX_FILAS": "400",
+    "MAX_ESTACIONES": "50",
+    "MIN_COMPLETITUD": "0.8",
+    "MIN_COMPLETITUD_PREP": "1"
+  }
+}

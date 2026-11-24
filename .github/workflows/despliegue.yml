@@ -1,0 +1,123 @@
+# Despliegue continuo: versión de vista previa probada y paso a producción con aprobación manual.
+name: Despliegue
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: despliegue
+  cancel-in-progress: false
+
+env:
+  WRANGLER_SEND_METRICS: "false"
+  URL_PRODUCCION: https://mcp-dga-mapas2.mcp-hidro-chile.workers.dev
+
+jobs:
+  vista_previa:
+    name: Vista previa
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      version: ${{ steps.subir.outputs.version }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Verificar credenciales
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Faltan el secreto CLOUDFLARE_API_TOKEN o la variable CLOUDFLARE_ACCOUNT_ID"
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: servidor/package-lock.json
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Descargar y verificar los datos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          etiqueta=$(jq -r .etiqueta parametros/datos_release.json)
+          archivo=$(jq -r .archivo parametros/datos_release.json)
+          huella=$(jq -r .sha256 parametros/datos_release.json)
+          gh release download "$etiqueta" --repo "$GITHUB_REPOSITORY" --pattern "$archivo" --dir descarga
+          echo "$huella  descarga/$archivo" | sha256sum --check --strict
+          mkdir -p datos/procesados
+          unzip -q "descarga/$archivo" -d datos/procesados
+          test -f datos/procesados/mapas2/catalogo.json
+      - name: Instalar dependencias
+        working-directory: servidor
+        run: npm ci
+      - name: Subir versión sin activarla
+        id: subir
+        working-directory: servidor
+        run: |
+          npx wrangler versions upload --message "${GITHUB_SHA::7}" 2>&1 | tee salida.txt
+          version=$(grep -oP 'Worker Version ID: \K[0-9a-f-]+' salida.txt)
+          url=$(grep -oP 'Version Preview URL: \K\S+' salida.txt)
+          test -n "$version" && test -n "$url"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Probar la versión de vista previa
+        working-directory: servidor
+        env:
+          URL_VISTA: ${{ steps.subir.outputs.url }}
+        run: |
+          for i in $(seq 1 30); do curl -sf -o /dev/null "$URL_VISTA/" && break; sleep 5; done
+          python test/probar_mcp.py "$URL_VISTA/mcp"
+
+  produccion:
+    name: Producción
+    needs: vista_previa
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: produccion
+      url: https://mcp-dga-mapas2.mcp-hidro-chile.workers.dev
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: servidor/package-lock.json
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        working-directory: servidor
+        run: npm ci
+      - name: Activar la versión probada
+        working-directory: servidor
+        env:
+          VERSION: ${{ needs.vista_previa.outputs.version }}
+        run: npx wrangler versions deploy "$VERSION@100%" --yes --message "${GITHUB_SHA::7}"
+      - name: Probar producción
+        working-directory: servidor
+        run: |
+          sleep 10
+          python test/probar_mcp.py "$URL_PRODUCCION/mcp"
