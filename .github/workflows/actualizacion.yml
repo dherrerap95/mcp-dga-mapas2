@@ -1,0 +1,87 @@
+# Actualización semanal: descarga Mapas DGA, corrige y convierte, publica un Release y abre un PR con el reporte.
+name: Actualización semanal
+
+on:
+  schedule:
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: actualizacion
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    name: Actualizar datos
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ secrets.ACTUALIZACION_TOKEN }}
+    steps:
+      - name: Verificar credenciales
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Falta el secreto ACTUALIZACION_TOKEN"
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          token: ${{ secrets.ACTUALIZACION_TOKEN }}
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: preparacion/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r preparacion/requirements.txt
+      - name: Descargar la versión anterior de los datos
+        run: |
+          etiqueta=$(jq -r .etiqueta parametros/datos_release.json)
+          archivo=$(jq -r .archivo parametros/datos_release.json)
+          huella=$(jq -r .sha256 parametros/datos_release.json)
+          gh release download "$etiqueta" --repo "$GITHUB_REPOSITORY" --pattern "$archivo" --dir ../anterior
+          echo "$huella  ../anterior/$archivo" | sha256sum --check --strict
+          unzip -q "../anterior/$archivo" -d ../anterior
+          echo "HUELLA_ANTERIOR=$huella" >> "$GITHUB_ENV"
+          echo "FECHA_ANTERIOR=$(jq -r .fecha_descarga parametros/mapas2_dga.json)" >> "$GITHUB_ENV"
+      - name: Descargar Mapas DGA
+        run: python preparacion/descargar_mapas2.py
+      - name: Leer, corregir, convertir y validar
+        run: python preparacion/preparar_todo.py
+      - name: Empaquetar los datos
+        run: |
+          python preparacion/empaquetar_datos.py
+          echo "FECHA=$(jq -r .fecha_descarga parametros/mapas2_dga.json)" >> "$GITHUB_ENV"
+          echo "HUELLA=$(jq -r .sha256 parametros/datos_release.json)" >> "$GITHUB_ENV"
+      - name: Armar el reporte
+        run: |
+          python preparacion/reporte_semanal.py --anterior ../anterior/mapas2 --desde "$FECHA_ANTERIOR" --salida ../reporte.md
+          cat ../reporte.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Publicar el Release y abrir el PR
+        if: env.HUELLA != env.HUELLA_ANTERIOR
+        run: |
+          etiqueta=$(jq -r .etiqueta parametros/datos_release.json)
+          archivo=$(jq -r .archivo parametros/datos_release.json)
+          rama="datos-$FECHA"
+          if gh release view "$etiqueta" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "::error::El Release $etiqueta ya existe"
+            exit 1
+          fi
+          gh release create "$etiqueta" "datos/$archivo" --repo "$GITHUB_REPOSITORY" --target main \
+            --title "Datos de Mapas DGA descargados el $FECHA" \
+            --notes "Datos de la Dirección General de Aguas (DGA) publicados en Mapas DGA (https://mapas2.mop.gob.cl), descargados el $FECHA y depurados para el servidor MCP. SHA-256: $HUELLA"
+          git config user.name "Diego Herrera Pino"
+          git config user.email "53460814+dherrerap95@users.noreply.github.com"
+          git switch -c "$rama"
+          git add parametros servidor/test/muestra
+          git commit -m "Actualizar los datos de Mapas DGA al $FECHA"
+          git push origin "$rama"
+          gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$rama" \
+            --title "Actualizar los datos de Mapas DGA al $FECHA" --body-file ../reporte.md
+      - name: Sin cambios en los datos
+        if: env.HUELLA == env.HUELLA_ANTERIOR
+        run: echo "Los datos descargados el $FECHA son iguales a la versión anterior; no se publica nada." >> "$GITHUB_STEP_SUMMARY"
