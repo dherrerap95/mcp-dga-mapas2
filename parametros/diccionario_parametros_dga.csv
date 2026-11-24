@@ -1,0 +1,101 @@
+﻿cod_param;parametro;unidad;expresion;metodologia;comentario
+5001;Color Verdadero;U Pt;NA;Platino Cobalto;Esto fue un error. Pues solo se cargo un dato
+5010;Nitrogeno de amonio;mg/L;N-NH4;SM 4500 NH3 BD;
+5011;Nitrogeno de amonio;mg/L;N-NH4;SM 4500 NH3 BD;
+5020;Conductividad específica 25 °C;uS/cm;CE;Conductivimetro;
+5040;Salinidad;g/kg;NA;Electrometria;Posiblemente error, muy pocos datos (7 datos)
+5050;Compuestos Fenolicos;mg/L;NA;SM 5530 C;
+5100;Solidos suspendidos totales;mg/L;NA;Gravimetria 103-105 °C;Corresponde a lagos y embalses
+5101;Solidos suspendidos totales;mg/L;NA;SM 2540 D;
+5140;Temperatura del agua;°C;NA;Termometro;
+5160;Turbiedad;NTU;NA;Nefelometría;Corresponde a lagos y embalses
+5180;Transparencia;m;NA;Disco Secchi;Corresponde a lagos y embalses
+5181;Clorofila a;ug/L;NA;?;Corresponde a lagos y embalses
+6000;Oxigeno disuelto;mg/L;NA;Yodometrico azida - titulacion;Se han cargado histricoamente como mg/L independiende de la metodología
+6001;Oxigeno disuelto, sat;%;-;Electrodo de membrana;Datos desde 2002 en adelante usar % de saturacion de oxígeno disuelto. Antes del año 1989 los datos eran cargados como mg/L Oxígeno disuelto.
+6020;pH;-;Unidad de pH;Potenciometrico;
+6080;Bicarbonato;mg/L;NA;Titulacion;
+6100;Boro total;mg/L;NA;Curcumin colorimetría;
+6120;Carbonato;mg/L;NA;Titulacion;
+6141;Cianuro total;mg/L;NA;Colorimetría piridina ácido barbiturico;todos los datos se han cargado en este codigo con esta metodología
+6182;Cloruro total;mg/L;NA;Potenciometrico argentometrico titulacion;Todos los datos se han cargado con esta metodología
+6183;Cloruro total;mg/L;NA;SM 4110 B;
+6202;Fluoruro total;mg/L;NA;Electrodo;Dato del 2018 posiblemente es un error
+6220;Fosforo de ortofosfato;mg/L;P-PO4;Colorimetria vanadomolibdofosforico;
+6240;Nitrogeno de nitrato;mg/L;N-NO3;Espectrofotometria ultravioleta;
+6241;Nitrogeno de nitrato;mg/L;N-NO3;SM 4500 NO3 B;
+6250;Nitrogeno de nitrito + nitrato;mg/L;N-(NO3+NO2);Espectrofotometria de absorción atomica;Para el calculo del indicador considerar como nitrato
+6260;Nitrogeno de nitrito;mg/L;N-NO2;NED-Dicloruro-Colorimetria;Se han cargado la mayoría de los datos acá independiente de la metodología
+6261;Nitrogeno de nitrito;mg/L;N-NO2;SM 4500 NO B;
+6282;Nitrogeno de amonio;mg/L;N-NH4;Titulación;
+6300;Nitrogeno organico;mg/L;NA;Kjeldahl titulacion;Podría ser un error por la poca cantidad de datos
+6310;Fosforo de ortofosfato;mg/L;P-PO4;ácido ascórbico colorimetria;
+6311;Fosforo total;mg/L;NA;Espectrometría de absorción molecular;Hasta la fecha 23/03/2011 los datos fueron cargados como ug/L. Luego de esa fecha fueron cargados como mg/L
+6321;Silice;mg/L;NA;Molibdosilicato colorimetria;
+6341;Sulfato;mg/L;NA;Turbidimetro;
+6342;Sulfato;mg/L;NA;SM 4110 B;
+7020;DBO5;mg/L;NA;Incubación;
+7040;DQO;mg/L;NA;Reflujo dicromato de potasio colorimetria;
+7080;Coliformes fecales;NMP/100mL;NA;Tubos múltiples;
+7082;Coliformes fecales;NMP/100mL;NA;SM 9221 E;
+7100;Coliformes totales;NMP/100mL;NA;Tubos múltiples;
+8000;Dureza CaCO3;mg/L;NA;EDTA;
+8020;Aluminio disuelto;mg/L;NA;Espectrofotometría de absorción atomica;
+8021;Aluminio total;mg/L;NA;Espectrofotometría de absorción atomica;
+8022;Aluminio total;mg/L;NA;ICP-OES;
+8024;Aluminio total;mg/L;NA;Plasma;
+8025;Aluminio disuelto;mg/L;NA;Plasma;
+8041;Arsénico total;mg/L;NA;Manchas de bromuro de mercurio;Todos los datos se han cargado en este código independiente de la metodología
+8045;Arsénico total;mg/L;NA;Espectrofotometría de absorción atomica;
+8103;Cadmio total;mg/L;NA;Espectrofotometría de absorción atomica;
+8104;Cadmio total;mg/L;NA;ICP-OES;
+8120;Calcio total;mg/L;NA;Permanganato de potasio titulacion;Originalmente este codigo es calcio disuelto, pero realmente los datos son de calcio total.
+8125;Calcio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8140;Cobre disuelto;mg/L;NA;Neocuproina;
+8145;Cobre total;mg/L;NA;Espectrofotometria de absorción atomica;
+8148;Cobre disuelto;mg/L;NA;Plasma;
+8149;Cobre total;mg/L;NA;Plasma;
+8150;Cromo hexavalente disuelto;mg/L;NA;Espectrofotometria de absorción atomica;
+8151;Cromo hexavalente total;mg/L;NA;Espectrofotometria de absorción atomica;
+8152;Cromo total;mg/L;NA;Colorimetría;Todos los datos de cromo total se han cargado en este código.
+8153;Cromo total;mg/L;NA;ICP-OES;
+8156;Cromo total;mg/L;NA;Plasma;
+8200;Hierro disuelto;mg/L;NA;Fenantrolina colorimetria;
+8203;Hierro total;mg/L;NA;Espectrofotometria de absorción atomica;
+8240;Litio disuelto;mg/L;NA;Fotometría de llama;
+8260;Magnesio total;mg/L;NA;gravimetría;Originalmente este codigo es magnesio disuelto, pero realmente los datos son de magnesio total.
+8263;Magnesio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8280;Manganeso disuelto;mg/L;NA;Colorimetria persulfato;
+8281;Manganeso total;mg/L;NA;Colorimetria persulfato;
+8282;Manganeso total;mg/L;NA;ICP-OES;
+8283;Manganeso total;mg/L;NA;ICP-OES;Originalmente este codigo es manganeso disuelto, pero realmente los datos son de manganeso total.
+8284;Manganeso disuelto;mg/L;NA;Plasma;
+8285;Manganeso total;mg/L;NA;Plasma;
+8300;Mercurio total;mg/L;NA;Ditizona;Originalmente este codigo es mercurio disuelto, pero realmente los datos son de mercurio total.
+8303;Mercurio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8320;Molibdeno total;mg/L;NA;Espectrofotometria de absorción atomica;
+8321;Molibdeno total;mg/L;NA;ICP-OES;
+8340;Niquel disuelto;mg/L;NA;Espectrofotometria de absorción atomica;
+8341;Niquel total;mg/L;NA;Espectrofotometria de absorción atomica;
+8342;Niquel total;mg/L;NA;ICP-OES;
+8361;Plata total;mg/L;NA;Espectrofotometria de absorción atomica;
+8380;Plomo disuelto;mg/L;NA;Ditizona-Colorimetria;
+8383;Plomo total;mg/L;NA;Espectrofotometria de absorción atomica;
+8384;Plomo total;mg/L;NA;ICP-OES;
+8400;Potasio total;mg/L;NA;Fotometría de llama;Originalmente este codigo es potasio disuelto, pero realmente los datos son de potasio total.
+8403;Potasio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8420;Selenio total;mg/L;NA;Diaminobencidina;Originalmente este codigo es selenio disuelto, pero realmente los datos son de selenio total.
+8422;Selenio total;mg/L;NA;Espectrofotometria de absorción atomica;Originalmente este codigo es selenio disuelto, pero realmente los datos son de selenio total.
+8423;Selenio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8440;Sodio total;mg/L;NA;Espectrofotometria de absorción atomica;Originalmente este codigo es sodio disuelto, pero realmente los datos son de sodio total.
+8441;Sodio total;mg/L;NA;Espectrofotometria de absorción atomica;
+8460;Zinc disuelto;mg/L;NA;Ditizona;
+8465;Zinc total;mg/L;NA;Espectrofotometria de absorción atomica;
+8466;Zinc total;mg/L;NA;ICP-OES;
+8468;Zinc disuelto;mg/L;NA;Plasma;
+8469;Zinc total;mg/L;NA;Plasma;
+9900;Nitrogeno Kjeldahl;ug/L;NA;?;
+9901;Nitrogeno total;ug/L;NA;?;Los datos desde el 08/08/2016 están expresados en mg/L
+9902;Nitrogeno total;mg/L;NA;SM 4500 D N-org B;
+9911;Cobalto total;mg/L;NA;Espectrofotometria de absorción atomica;
+9921;RAS;NA;NA;Calculo;Adimensional, es una razón.

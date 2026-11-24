@@ -1,0 +1,3 @@
+id;informe;codigo;variable;fecha_desde;fecha_hasta;valor_si;accion;valor_nuevo;regla;motivo;estado
+1;prep;01044001;prep;2019-04-01;2020-07-31;;eliminar;;C4;meses de abril a noviembre con 277 a 1 488 mm y valores diarios repetidos durante semanas (48 mm durante 118 días; 14,4 mm durante 86 y 50 días), imposibles en el altiplano en estación seca;rechazado
+2;caudal;05421002;caudal;1996-12-10;2002-04-12;0,23;eliminar;;C4;0,23 m³/s repetido en tramos de 36 a 763 días seguidos entre 1996 y 2002, propio de un valor de relleno;rechazado

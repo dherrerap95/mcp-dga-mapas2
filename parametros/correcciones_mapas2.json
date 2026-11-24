@@ -1,0 +1,70 @@
+{
+  "estados": {"original": 0, "corregido": 1, "eliminado": 2, "dudoso": 3},
+  "reglas": {
+    "C1": "Valor de relleno 999,9 mm en precipitación",
+    "C2": "Valor de relleno -99 °C en temperatura",
+    "C3": "Precipitación negativa",
+    "C4": "Tramo de valores repetidos imposible",
+    "D1": "Coma decimal corrida",
+    "D2": "Valor imposible sin corrección posible",
+    "T1": "Mínima mayor que máxima: valores intercambiados",
+    "T1E": "Mínima mayor que máxima sin intercambio posible",
+    "T2": "Temperatura media recalculada desde mínima y máxima",
+    "U1": "Fecha duplicada con el mismo valor",
+    "U2": "Fecha duplicada con distinto redondeo",
+    "U2E": "Fecha duplicada con valores distintos",
+    "U3": "Muestra duplicada sin hora válida",
+    "F1": "Fecha de relleno 01-01-1900",
+    "F2": "Fecha fuera de secuencia",
+    "F3": "Hora mal escrita",
+    "P1": "Unidad mal rotulada o escrita",
+    "P2": "Parámetro mal rotulado",
+    "P3": "Unidad de nitrógeno amoniacal",
+    "P4": "Parámetro sin nombre ni unidad",
+    "P5": "Parámetros con dos códigos unificados",
+    "P6": "Calificador sin significado",
+    "M1": "Minutos o segundos iguales a 60",
+    "M2": "Altitud 0 tratada como faltante",
+    "M3": "Coordenada incoherente o truncada"
+  },
+  "centinelas": {"prep": [999.9], "tmin": [-99], "tmax": [-99], "tmed": [-99]},
+  "limites": {
+    "prep": [0, 1000],
+    "tmin": [-45, 40],
+    "tmax": [-30, 50],
+    "tmed": [-40, 45],
+    "caudal": [0, 50000],
+    "pozos": [-10, 400]
+  },
+  "coma_decimal": {
+    "divisores": [10, 100, 1000],
+    "vecinos_dias": {"tmin": 7, "tmax": 7, "tmed": 7},
+    "tolerancia": {"tmin": 3, "tmax": 3, "tmed": 3, "pozos": 1}
+  },
+  "calidad": {
+    "limites_por_estacion": {"5140": {"04302011-0": [-2, 60]}},
+    "eliminar_sin_correccion": {"6000": {"hasta": 200, "motivo": "valor propio de porcentaje de saturación registrado como mg/l"}},
+    "reasignar_parametro": [
+      {"de": "6001", "a": "6000", "antes_de": "1990-01-01",
+       "motivo": "oxígeno disuelto en mg/l registrado con el código de porcentaje de saturación (mediana 9,2 antes de 1990 y 96,6 después)"}
+    ],
+    "unidad_incierta": [
+      {"cod_param": "9900", "motivo": "unidad incierta: el código mezcla valores en µg/l y mg/l"},
+      {"cod_param": "9901", "motivo": "unidad incierta: el código mezcla valores en µg/l y mg/l"},
+      {"cod_param": "6311", "antes_de": "2014-01-01", "motivo": "posible valor en µg/l (medianas de 3 a 13 hasta 2013 y de 0,005 a 0,05 después)"}
+    ]
+  },
+  "duplicados": {"tolerancia_redondeo_rel": 0.05},
+  "intercambio_extremas": {"vecinos_dias": 3, "tolerancia": 5, "diferencia_minima": 0.5},
+  "media_derivada": {"tolerancia_redondeo": 0.051},
+  "marcas": {
+    "caudal_pico_factor": 100,
+    "caudal_maximo_dudoso": 10000,
+    "caudal_tramo_constante_dias": 30,
+    "prep_dudosa_mm": 300,
+    "prep_tramo_constante_dias": 5,
+    "temp_salto": 25,
+    "temp_tramo_constante_dias": 7,
+    "tmin_dudosa_bajo": -30
+  }
+}

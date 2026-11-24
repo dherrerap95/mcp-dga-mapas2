@@ -1,0 +1,1682 @@
+{
+ "fuente": "Mapas DGA",
+ "url": "https://mapas2.mop.gob.cl",
+ "cita": "Dirección General de Aguas (DGA), Ministerio de Obras Públicas. Mapas DGA. https://mapas2.mop.gob.cl",
+ "fecha_descarga": "2026-11-22",
+ "variables_diarias": {
+  "caudal": {
+   "unidad": "m³/s",
+   "agregacion": "media",
+   "descripcion": "Caudal medio diario"
+  },
+  "prep": {
+   "unidad": "mm",
+   "agregacion": "suma",
+   "descripcion": "Precipitación diaria"
+  },
+  "tmin": {
+   "unidad": "°C",
+   "agregacion": "media",
+   "descripcion": "Temperatura mínima diaria"
+  },
+  "tmax": {
+   "unidad": "°C",
+   "agregacion": "media",
+   "descripcion": "Temperatura máxima diaria"
+  },
+  "tmed": {
+   "unidad": "°C",
+   "agregacion": "media",
+   "descripcion": "Temperatura media diaria, promedio de la mínima y la máxima"
+  }
+ },
+ "variables_irregulares": {
+  "pozos": {
+   "unidad": "m",
+   "descripcion": "Profundidad del nivel del agua bajo el terreno (negativo: sobre el terreno)"
+  },
+  "sed_integrado": {
+   "unidad": "mg/l",
+   "descripcion": "Concentración de sedimentos en suspensión, muestreo integrado"
+  },
+  "sed_rutinario": {
+   "unidad": "mg/l",
+   "descripcion": "Concentración de sedimentos en suspensión, muestreo rutinario"
+  }
+ },
+ "observaciones_pozos": [
+  "",
+  "Dinamico",
+  "Sin acceso",
+  "Seco",
+  "Embancado",
+  "Surgente"
+ ],
+ "calificadores_calidad": [
+  "",
+  "=",
+  "<",
+  ">",
+  "D"
+ ],
+ "estados": {
+  "original": 0,
+  "corregido": 1,
+  "eliminado": 2,
+  "dudoso": 3
+ },
+ "reglas": {
+  "C1": "Valor de relleno 999,9 mm en precipitación",
+  "C2": "Valor de relleno -99 °C en temperatura",
+  "C3": "Precipitación negativa",
+  "C4": "Tramo de valores repetidos imposible",
+  "D1": "Coma decimal corrida",
+  "D2": "Valor imposible sin corrección posible",
+  "T1": "Mínima mayor que máxima: valores intercambiados",
+  "T1E": "Mínima mayor que máxima sin intercambio posible",
+  "T2": "Temperatura media recalculada desde mínima y máxima",
+  "U1": "Fecha duplicada con el mismo valor",
+  "U2": "Fecha duplicada con distinto redondeo",
+  "U2E": "Fecha duplicada con valores distintos",
+  "U3": "Muestra duplicada sin hora válida",
+  "F1": "Fecha de relleno 01-01-1900",
+  "F2": "Fecha fuera de secuencia",
+  "F3": "Hora mal escrita",
+  "P1": "Unidad mal rotulada o escrita",
+  "P2": "Parámetro mal rotulado",
+  "P3": "Unidad de nitrógeno amoniacal",
+  "P4": "Parámetro sin nombre ni unidad",
+  "P5": "Parámetros con dos códigos unificados",
+  "P6": "Calificador sin significado",
+  "M1": "Minutos o segundos iguales a 60",
+  "M2": "Altitud 0 tratada como faltante",
+  "M3": "Coordenada incoherente o truncada"
+ },
+ "formatos": {
+  "diario": "series/<variable>/<codigo>.bin: int32 inicio (días desde 1970-01-01), int32 n, float32[n] valor, uint8[n] estado; little-endian; NaN = sin dato",
+  "irregular": "series/<variable>/<codigo>.bin: int32 n, int32[n] fecha (días desde 1970-01-01), int16[n] minuto del día (-1 = sin hora), float32[n] valor, uint8[n] estado, uint8[n] observación",
+  "calidad": "calidad/<codigo>.bin: int32 n, int32[n] fecha, int16[n] minuto, uint16[n] índice del parámetro en catalogo.parametros, float32[n] profundidad, float32[n] valor, uint8[n] calificador, uint8[n] estado"
+ },
+ "parametros": [
+  {
+   "codigo": "640",
+   "nombre": "HUMEDAD RELATIVA (PSICROMETRO)",
+   "unidad": "%",
+   "metodologia": "",
+   "identificado": true
+  },
+  {
+   "codigo": "5001",
+   "nombre": "Color",
+   "unidad": "U Pt-Co",
+   "metodologia": "Platino Cobalto",
+   "identificado": true
+  },
+  {
+   "codigo": "5009",
+   "nombre": "Parámetro sin identificar (código 5009)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5010",
+   "nombre": "Nitrogeno de amonio",
+   "unidad": "mg/l N-NH4",
+   "metodologia": "SM 4500 NH3 BD",
+   "identificado": true
+  },
+  {
+   "codigo": "5011",
+   "nombre": "Nitrogeno de amonio",
+   "unidad": "mg/l N-NH4",
+   "metodologia": "SM 4500 NH3 BD",
+   "identificado": true
+  },
+  {
+   "codigo": "5013",
+   "nombre": "Parámetro sin identificar (código 5013)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5014",
+   "nombre": "Parámetro sin identificar (código 5014)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5020",
+   "nombre": "Conductividad Especifica",
+   "unidad": "µS/cm",
+   "metodologia": "Conductivimetro",
+   "identificado": true
+  },
+  {
+   "codigo": "5030",
+   "nombre": "Parámetro sin identificar (código 5030)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5040",
+   "nombre": "Salinidad",
+   "unidad": "g/kg",
+   "metodologia": "Electrometria",
+   "identificado": true
+  },
+  {
+   "codigo": "5050",
+   "nombre": "Compuestos Fenolicos",
+   "unidad": "mg/l",
+   "metodologia": "SM 5530 C",
+   "identificado": true
+  },
+  {
+   "codigo": "5100",
+   "nombre": "Solidos Suspendidos Totales",
+   "unidad": "mg/l",
+   "metodologia": "Gravimetria 103-105 °C",
+   "identificado": true
+  },
+  {
+   "codigo": "5101",
+   "nombre": "Solidos suspendidos totales",
+   "unidad": "mg/l",
+   "metodologia": "SM 2540 D",
+   "identificado": true
+  },
+  {
+   "codigo": "5104",
+   "nombre": "Parámetro sin identificar (código 5104)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5140",
+   "nombre": "Temperatura del Agua",
+   "unidad": "°C",
+   "metodologia": "Termometro",
+   "identificado": true
+  },
+  {
+   "codigo": "5160",
+   "nombre": "Turbiedad Nefelometrica",
+   "unidad": "UNT",
+   "metodologia": "Nefelometría",
+   "identificado": true
+  },
+  {
+   "codigo": "5180",
+   "nombre": "Transparencia",
+   "unidad": "m",
+   "metodologia": "Disco Secchi",
+   "identificado": true
+  },
+  {
+   "codigo": "5181",
+   "nombre": "Clorofila a",
+   "unidad": "µg/l",
+   "metodologia": "?",
+   "identificado": true
+  },
+  {
+   "codigo": "5182",
+   "nombre": "Parámetro sin identificar (código 5182)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "5183",
+   "nombre": "Parámetro sin identificar (código 5183)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "6000",
+   "nombre": "Oxigeno Disuelto",
+   "unidad": "mg/l O2",
+   "metodologia": "Yodometrico azida - titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "6001",
+   "nombre": "Oxígeno disuelto (porcentaje de saturación)",
+   "unidad": "%",
+   "metodologia": "Electrodo de membrana",
+   "identificado": true
+  },
+  {
+   "codigo": "6020",
+   "nombre": "Ph",
+   "unidad": "unidad de pH",
+   "metodologia": "Potenciometrico",
+   "identificado": true
+  },
+  {
+   "codigo": "6080",
+   "nombre": "Bicarbonato",
+   "unidad": "mg/l",
+   "metodologia": "Titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "6100",
+   "nombre": "Boro",
+   "unidad": "mg/l B",
+   "metodologia": "Curcumin colorimetría",
+   "identificado": true
+  },
+  {
+   "codigo": "6120",
+   "nombre": "Carbonato",
+   "unidad": "mg/l",
+   "metodologia": "Titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "6141",
+   "nombre": "Cianuro",
+   "unidad": "mg/l CN",
+   "metodologia": "Colorimetría piridina ácido barbiturico",
+   "identificado": true
+  },
+  {
+   "codigo": "6182",
+   "nombre": "Cloruro",
+   "unidad": "mg/l Cl",
+   "metodologia": "Potenciometrico argentometrico titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "6183",
+   "nombre": "Cloruro total",
+   "unidad": "mg/l",
+   "metodologia": "SM 4110 B",
+   "identificado": true
+  },
+  {
+   "codigo": "6202",
+   "nombre": "Fluoruro",
+   "unidad": "mg/l F",
+   "metodologia": "Electrodo",
+   "identificado": true
+  },
+  {
+   "codigo": "6211",
+   "nombre": "Parámetro sin identificar (código 6211)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "6220",
+   "nombre": "Fosfato",
+   "unidad": "mg/l P",
+   "metodologia": "Colorimetria vanadomolibdofosforico",
+   "identificado": true
+  },
+  {
+   "codigo": "6221",
+   "nombre": "Fosfato",
+   "unidad": "mg/l P",
+   "metodologia": "",
+   "identificado": true
+  },
+  {
+   "codigo": "6240",
+   "nombre": "Nitrato",
+   "unidad": "mg/l NO3",
+   "metodologia": "Espectrofotometria ultravioleta",
+   "identificado": true
+  },
+  {
+   "codigo": "6241",
+   "nombre": "Nitrato",
+   "unidad": "mg/l NO3",
+   "metodologia": "SM 4500 NO3 B",
+   "identificado": true
+  },
+  {
+   "codigo": "6250",
+   "nombre": "Nitrogeno de nitrito + nitrato",
+   "unidad": "mg/l N-(NO3+NO2)",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "6260",
+   "nombre": "Nitrito",
+   "unidad": "mg/l",
+   "metodologia": "NED-Dicloruro-Colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "6261",
+   "nombre": "Nitrogeno de nitrito",
+   "unidad": "mg/l N-NO2",
+   "metodologia": "SM 4500 NO B",
+   "identificado": true
+  },
+  {
+   "codigo": "6280",
+   "nombre": "Nitrogeno Amoniacal",
+   "unidad": "mg/l NO2",
+   "metodologia": "",
+   "identificado": true
+  },
+  {
+   "codigo": "6282",
+   "nombre": "Nitrogeno Amoniacal",
+   "unidad": "mg/l NO2",
+   "metodologia": "Titulación",
+   "identificado": true
+  },
+  {
+   "codigo": "6300",
+   "nombre": "Nitrogeno Organico",
+   "unidad": "mg/l NO2",
+   "metodologia": "Kjeldahl titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "6310",
+   "nombre": "Fosforo total",
+   "unidad": "mg/l PO4",
+   "metodologia": "ácido ascórbico colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "6311",
+   "nombre": "Fosforo total",
+   "unidad": "mg/l PO4",
+   "metodologia": "Espectrometría de absorción molecular",
+   "identificado": true
+  },
+  {
+   "codigo": "6321",
+   "nombre": "Silice",
+   "unidad": "mg/l Si",
+   "metodologia": "Molibdosilicato colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "6341",
+   "nombre": "Sulfato",
+   "unidad": "mg/l",
+   "metodologia": "Turbidimetro",
+   "identificado": true
+  },
+  {
+   "codigo": "6342",
+   "nombre": "Sulfato",
+   "unidad": "mg/l",
+   "metodologia": "SM 4110 B",
+   "identificado": true
+  },
+  {
+   "codigo": "7020",
+   "nombre": "Demanda Bioquimica de Oxigeno - 5 dias",
+   "unidad": "mg/l O2",
+   "metodologia": "Incubación",
+   "identificado": true
+  },
+  {
+   "codigo": "7040",
+   "nombre": "Demanda Quimica de Oxigeno",
+   "unidad": "mg/l O2",
+   "metodologia": "Reflujo dicromato de potasio colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "7080",
+   "nombre": "Coliformes Fecales",
+   "unidad": "NMP/100 ml",
+   "metodologia": "Tubos múltiples",
+   "identificado": true
+  },
+  {
+   "codigo": "7082",
+   "nombre": "Coliformes fecales",
+   "unidad": "NMP/100 ml",
+   "metodologia": "SM 9221 E",
+   "identificado": true
+  },
+  {
+   "codigo": "7083",
+   "nombre": "Parámetro sin identificar (código 7083)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "7084",
+   "nombre": "Parámetro sin identificar (código 7084)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "7085",
+   "nombre": "Parámetro sin identificar (código 7085)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "7086",
+   "nombre": "Parámetro sin identificar (código 7086)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "7100",
+   "nombre": "Coliformes Totales",
+   "unidad": "NMP/100 ml",
+   "metodologia": "Tubos múltiples",
+   "identificado": true
+  },
+  {
+   "codigo": "8000",
+   "nombre": "Dureza (CaCO3)",
+   "unidad": "mg/l",
+   "metodologia": "EDTA",
+   "identificado": true
+  },
+  {
+   "codigo": "8020",
+   "nombre": "Aluminio disuelto",
+   "unidad": "mg/l Al",
+   "metodologia": "Espectrofotometría de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8021",
+   "nombre": "Aluminio Total",
+   "unidad": "mg/l Al",
+   "metodologia": "Espectrofotometría de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8022",
+   "nombre": "Aluminio total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8024",
+   "nombre": "Aluminio total",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8025",
+   "nombre": "Aluminio disuelto",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8041",
+   "nombre": "Arsenico total",
+   "unidad": "mg/l As",
+   "metodologia": "Manchas de bromuro de mercurio",
+   "identificado": true
+  },
+  {
+   "codigo": "8045",
+   "nombre": "Arsenico total",
+   "unidad": "mg/l As",
+   "metodologia": "Espectrofotometría de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8103",
+   "nombre": "Cadmio total",
+   "unidad": "mg/l Cd",
+   "metodologia": "Espectrofotometría de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8104",
+   "nombre": "Cadmio total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8105",
+   "nombre": "Parámetro sin identificar (código 8105)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8107",
+   "nombre": "Parámetro sin identificar (código 8107)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8108",
+   "nombre": "Parámetro sin identificar (código 8108)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8109",
+   "nombre": "Parámetro sin identificar (código 8109)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8110",
+   "nombre": "Parámetro sin identificar (código 8110)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8111",
+   "nombre": "Parámetro sin identificar (código 8111)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8120",
+   "nombre": "Calcio disuelto",
+   "unidad": "mg/l Ca",
+   "metodologia": "Permanganato de potasio titulacion",
+   "identificado": true
+  },
+  {
+   "codigo": "8125",
+   "nombre": "Calcio total",
+   "unidad": "mg/l Ca",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8140",
+   "nombre": "Cobre disuelto",
+   "unidad": "mg/l Cu",
+   "metodologia": "Neocuproina",
+   "identificado": true
+  },
+  {
+   "codigo": "8145",
+   "nombre": "Cobre total",
+   "unidad": "mg/l Cu",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8148",
+   "nombre": "Cobre disuelto",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8149",
+   "nombre": "Cobre total",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8150",
+   "nombre": "Cromo Hexavalente Disuelto",
+   "unidad": "mg/l Cr",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8151",
+   "nombre": "Cromo Hexavalente Total",
+   "unidad": "mg/l Cr",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8152",
+   "nombre": "Cromo Hexavalente Disuelto",
+   "unidad": "mg/l Cr",
+   "metodologia": "Colorimetría",
+   "identificado": true
+  },
+  {
+   "codigo": "8153",
+   "nombre": "Cromo Hexavalente Total",
+   "unidad": "mg/l Cr",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8156",
+   "nombre": "Cromo total",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8200",
+   "nombre": "Fierro Disuelto",
+   "unidad": "mg/l Fe",
+   "metodologia": "Fenantrolina colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "8203",
+   "nombre": "Fierro total",
+   "unidad": "mg/l Fe",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8205",
+   "nombre": "Parámetro sin identificar (código 8205)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8239",
+   "nombre": "Parámetro sin identificar (código 8239)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "8240",
+   "nombre": "Litio disuelto",
+   "unidad": "mg/l Li",
+   "metodologia": "Fotometría de llama",
+   "identificado": true
+  },
+  {
+   "codigo": "8260",
+   "nombre": "Magnesio disuelto",
+   "unidad": "mg/l Mg",
+   "metodologia": "gravimetría",
+   "identificado": true
+  },
+  {
+   "codigo": "8263",
+   "nombre": "Magnesio total",
+   "unidad": "mg/l Mg",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8280",
+   "nombre": "Manganeso disuelto",
+   "unidad": "mg/l Mn",
+   "metodologia": "Colorimetria persulfato",
+   "identificado": true
+  },
+  {
+   "codigo": "8281",
+   "nombre": "Manganeso total",
+   "unidad": "mg/l Mn",
+   "metodologia": "Colorimetria persulfato",
+   "identificado": true
+  },
+  {
+   "codigo": "8282",
+   "nombre": "Manganeso disuelto",
+   "unidad": "mg/l Mn",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8283",
+   "nombre": "Manganeso total",
+   "unidad": "mg/l Mn",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8284",
+   "nombre": "Manganeso disuelto",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8285",
+   "nombre": "Manganeso total",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8300",
+   "nombre": "Mercurio disuelto",
+   "unidad": "mg/l Hg",
+   "metodologia": "Ditizona",
+   "identificado": true
+  },
+  {
+   "codigo": "8303",
+   "nombre": "Mercurio total",
+   "unidad": "mg/l Hg",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8320",
+   "nombre": "Molibdeno disuelto",
+   "unidad": "mg/l Mo",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8321",
+   "nombre": "Molibdeno total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8340",
+   "nombre": "Niquel disuelto",
+   "unidad": "mg/l Ni",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8341",
+   "nombre": "Niquel total",
+   "unidad": "mg/l Ni",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8342",
+   "nombre": "Niquel total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8361",
+   "nombre": "Plata total",
+   "unidad": "mg/l Ag",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8380",
+   "nombre": "Plomo disuelto",
+   "unidad": "mg/l Pb",
+   "metodologia": "Ditizona-Colorimetria",
+   "identificado": true
+  },
+  {
+   "codigo": "8381",
+   "nombre": "Plomo total",
+   "unidad": "mg/l Pb",
+   "metodologia": "",
+   "identificado": true
+  },
+  {
+   "codigo": "8383",
+   "nombre": "Plomo total",
+   "unidad": "mg/l Pb",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8384",
+   "nombre": "Plomo total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8400",
+   "nombre": "Potasio disuelto",
+   "unidad": "mg/l K",
+   "metodologia": "Fotometría de llama",
+   "identificado": true
+  },
+  {
+   "codigo": "8403",
+   "nombre": "Potasio total",
+   "unidad": "mg/l K",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8420",
+   "nombre": "Selenio disuelto",
+   "unidad": "mg/l Se",
+   "metodologia": "Diaminobencidina",
+   "identificado": true
+  },
+  {
+   "codigo": "8422",
+   "nombre": "Selenio disuelto",
+   "unidad": "mg/l Se",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8423",
+   "nombre": "Selenio total",
+   "unidad": "mg/l Se",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8440",
+   "nombre": "Sodio disuelto",
+   "unidad": "mg/l",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8441",
+   "nombre": "Sodio total",
+   "unidad": "mg/l Na",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8460",
+   "nombre": "Zinc disuelto",
+   "unidad": "mg/l Zn",
+   "metodologia": "Ditizona",
+   "identificado": true
+  },
+  {
+   "codigo": "8465",
+   "nombre": "Zinc total",
+   "unidad": "mg/l Zn",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "8466",
+   "nombre": "Zinc total",
+   "unidad": "mg/l",
+   "metodologia": "ICP-OES",
+   "identificado": true
+  },
+  {
+   "codigo": "8468",
+   "nombre": "Zinc disuelto",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8469",
+   "nombre": "Zinc total",
+   "unidad": "mg/l",
+   "metodologia": "Plasma",
+   "identificado": true
+  },
+  {
+   "codigo": "8501",
+   "nombre": "Parámetro sin identificar (código 8501)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "9900",
+   "nombre": "Nitrogeno Kjeldahl",
+   "unidad": "incierta (µg/l o mg/l)",
+   "metodologia": "?",
+   "identificado": true
+  },
+  {
+   "codigo": "9901",
+   "nombre": "Nitrógeno Total",
+   "unidad": "mg/l",
+   "metodologia": "?",
+   "identificado": true
+  },
+  {
+   "codigo": "9902",
+   "nombre": "Nitrogeno total",
+   "unidad": "mg/l",
+   "metodologia": "SM 4500 D N-org B",
+   "identificado": true
+  },
+  {
+   "codigo": "9911",
+   "nombre": "Cobalto Total",
+   "unidad": "mg/l",
+   "metodologia": "Espectrofotometria de absorción atomica",
+   "identificado": true
+  },
+  {
+   "codigo": "9912",
+   "nombre": "Parámetro sin identificar (código 9912)",
+   "unidad": "",
+   "metodologia": "",
+   "identificado": false
+  },
+  {
+   "codigo": "9921",
+   "nombre": "Razon de Absorción de Sodio (RAS)",
+   "unidad": "",
+   "metodologia": "Calculo",
+   "identificado": true
+  }
+ ],
+ "correcciones_de_rotulo": [
+  {
+   "variable": "5001",
+   "campo": "unidad",
+   "valor_anterior": "U. Pt",
+   "valor_corregido": "U Pt-Co",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 1 mediciones"
+  },
+  {
+   "variable": "5009",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5009)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 65 mediciones"
+  },
+  {
+   "variable": "5010",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno de amonio",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 962 mediciones"
+  },
+  {
+   "variable": "5010",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l N-NH4",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 962 mediciones"
+  },
+  {
+   "variable": "5011",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno de amonio",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2201 mediciones"
+  },
+  {
+   "variable": "5011",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l N-NH4",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2201 mediciones"
+  },
+  {
+   "variable": "5013",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5013)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 8 mediciones"
+  },
+  {
+   "variable": "5014",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5014)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 8 mediciones"
+  },
+  {
+   "variable": "5020",
+   "campo": "unidad",
+   "valor_anterior": "mhos/cm",
+   "valor_corregido": "µS/cm",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 83566 mediciones"
+  },
+  {
+   "variable": "5030",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5030)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 3011 mediciones"
+  },
+  {
+   "variable": "5050",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Compuestos Fenolicos",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 391 mediciones"
+  },
+  {
+   "variable": "5050",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 391 mediciones"
+  },
+  {
+   "variable": "5101",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Solidos suspendidos totales",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 434 mediciones"
+  },
+  {
+   "variable": "5101",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 434 mediciones"
+  },
+  {
+   "variable": "5104",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5104)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2965 mediciones"
+  },
+  {
+   "variable": "5140",
+   "campo": "unidad",
+   "valor_anterior": "Grad. C",
+   "valor_corregido": "°C",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 65970 mediciones"
+  },
+  {
+   "variable": "5160",
+   "campo": "unidad",
+   "valor_anterior": "u. nefel",
+   "valor_corregido": "UNT",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 9022 mediciones"
+  },
+  {
+   "variable": "5180",
+   "campo": "unidad",
+   "valor_anterior": "metros",
+   "valor_corregido": "m",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 719 mediciones"
+  },
+  {
+   "variable": "5181",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Clorofila a",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 8425 mediciones"
+  },
+  {
+   "variable": "5181",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "µg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 8425 mediciones"
+  },
+  {
+   "variable": "5182",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5182)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2252 mediciones"
+  },
+  {
+   "variable": "5183",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 5183)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 957 mediciones"
+  },
+  {
+   "variable": "6001",
+   "campo": "parametro",
+   "valor_anterior": "Oxigeno Disuelto",
+   "valor_corregido": "Oxígeno disuelto (porcentaje de saturación)",
+   "regla": "P2",
+   "evidencia": "rótulo aplicado a 26792 mediciones"
+  },
+  {
+   "variable": "6001",
+   "campo": "unidad",
+   "valor_anterior": "mg/l O2",
+   "valor_corregido": "%",
+   "regla": "P2",
+   "evidencia": "rótulo aplicado a 26792 mediciones"
+  },
+  {
+   "variable": "6020",
+   "campo": "unidad",
+   "valor_anterior": "unid. ph",
+   "valor_corregido": "unidad de pH",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 83573 mediciones"
+  },
+  {
+   "variable": "6183",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Cloruro total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1459 mediciones"
+  },
+  {
+   "variable": "6183",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1459 mediciones"
+  },
+  {
+   "variable": "6211",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 6211)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 3 mediciones"
+  },
+  {
+   "variable": "6250",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno de nitrito + nitrato",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 3849 mediciones"
+  },
+  {
+   "variable": "6250",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l N-(NO3+NO2)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 3849 mediciones"
+  },
+  {
+   "variable": "6261",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno de nitrito",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2304 mediciones"
+  },
+  {
+   "variable": "6261",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l N-NO2",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2304 mediciones"
+  },
+  {
+   "variable": "6342",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Sulfato",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1458 mediciones"
+  },
+  {
+   "variable": "6342",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1458 mediciones"
+  },
+  {
+   "variable": "7080",
+   "campo": "unidad",
+   "valor_anterior": "nmp/100",
+   "valor_corregido": "NMP/100 ml",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 206 mediciones"
+  },
+  {
+   "variable": "7082",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Coliformes fecales",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 445 mediciones"
+  },
+  {
+   "variable": "7082",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "NMP/100 ml",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 445 mediciones"
+  },
+  {
+   "variable": "7083",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 7083)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6 mediciones"
+  },
+  {
+   "variable": "7084",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 7084)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6 mediciones"
+  },
+  {
+   "variable": "7085",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 7085)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6 mediciones"
+  },
+  {
+   "variable": "7086",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 7086)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6 mediciones"
+  },
+  {
+   "variable": "7100",
+   "campo": "unidad",
+   "valor_anterior": "nmp/100",
+   "valor_corregido": "NMP/100 ml",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 137 mediciones"
+  },
+  {
+   "variable": "8021",
+   "campo": "unidad",
+   "valor_anterior": "Mg/L Al",
+   "valor_corregido": "mg/l Al",
+   "regla": "P1",
+   "evidencia": "rótulo aplicado a 23518 mediciones"
+  },
+  {
+   "variable": "8022",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Aluminio total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1118 mediciones"
+  },
+  {
+   "variable": "8022",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1118 mediciones"
+  },
+  {
+   "variable": "8024",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Aluminio total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6600 mediciones"
+  },
+  {
+   "variable": "8024",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 6600 mediciones"
+  },
+  {
+   "variable": "8025",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Aluminio disuelto",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 380 mediciones"
+  },
+  {
+   "variable": "8025",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 380 mediciones"
+  },
+  {
+   "variable": "8104",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Cadmio total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1088 mediciones"
+  },
+  {
+   "variable": "8104",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1088 mediciones"
+  },
+  {
+   "variable": "8105",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8105)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 153 mediciones"
+  },
+  {
+   "variable": "8107",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8107)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4 mediciones"
+  },
+  {
+   "variable": "8108",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8108)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4 mediciones"
+  },
+  {
+   "variable": "8109",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8109)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 5 mediciones"
+  },
+  {
+   "variable": "8110",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8110)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4 mediciones"
+  },
+  {
+   "variable": "8111",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8111)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4 mediciones"
+  },
+  {
+   "variable": "8148",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Cobre disuelto",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 381 mediciones"
+  },
+  {
+   "variable": "8148",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 381 mediciones"
+  },
+  {
+   "variable": "8149",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Cobre total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 145 mediciones"
+  },
+  {
+   "variable": "8149",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 145 mediciones"
+  },
+  {
+   "variable": "8156",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Cromo total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 233 mediciones"
+  },
+  {
+   "variable": "8156",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 233 mediciones"
+  },
+  {
+   "variable": "8205",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8205)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 358 mediciones"
+  },
+  {
+   "variable": "8239",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8239)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4 mediciones"
+  },
+  {
+   "variable": "8284",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Manganeso disuelto",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 355 mediciones"
+  },
+  {
+   "variable": "8284",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 355 mediciones"
+  },
+  {
+   "variable": "8285",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Manganeso total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 10149 mediciones"
+  },
+  {
+   "variable": "8285",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 10149 mediciones"
+  },
+  {
+   "variable": "8321",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Molibdeno total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1068 mediciones"
+  },
+  {
+   "variable": "8321",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1068 mediciones"
+  },
+  {
+   "variable": "8342",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Niquel total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 882 mediciones"
+  },
+  {
+   "variable": "8342",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 882 mediciones"
+  },
+  {
+   "variable": "8384",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Plomo total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1068 mediciones"
+  },
+  {
+   "variable": "8384",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1068 mediciones"
+  },
+  {
+   "variable": "8466",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Zinc total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1100 mediciones"
+  },
+  {
+   "variable": "8466",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 1100 mediciones"
+  },
+  {
+   "variable": "8468",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Zinc disuelto",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 138 mediciones"
+  },
+  {
+   "variable": "8468",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 138 mediciones"
+  },
+  {
+   "variable": "8469",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Zinc total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 138 mediciones"
+  },
+  {
+   "variable": "8469",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 138 mediciones"
+  },
+  {
+   "variable": "8501",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 8501)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 30 mediciones"
+  },
+  {
+   "variable": "9900",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno Kjeldahl",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4083 mediciones"
+  },
+  {
+   "variable": "9900",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "incierta (µg/l o mg/l)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 4083 mediciones"
+  },
+  {
+   "variable": "9902",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Nitrogeno total",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2251 mediciones"
+  },
+  {
+   "variable": "9902",
+   "campo": "unidad",
+   "valor_anterior": "",
+   "valor_corregido": "mg/l",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 2251 mediciones"
+  },
+  {
+   "variable": "9912",
+   "campo": "parametro",
+   "valor_anterior": "",
+   "valor_corregido": "Parámetro sin identificar (código 9912)",
+   "regla": "P4",
+   "evidencia": "rótulo aplicado a 38 mediciones"
+  }
+ ]
+}

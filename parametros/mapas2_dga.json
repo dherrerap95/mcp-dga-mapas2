@@ -1,0 +1,95 @@
+{
+  "originales": "../datos/originales/mapas2",
+  "intermedios": "../datos/intermedios/mapas2",
+  "procesados": "datos/procesados/mapas2",
+  "revision": "../datos/revision_mapas2/correcciones",
+  "catalogo_pagina": "catalogo_estaciones_pagina.json",
+  "fecha_descarga": "2026-11-22",
+  "url": "https://mapas2.mop.gob.cl",
+  "cita": "Dirección General de Aguas (DGA), Ministerio de Obras Públicas. Mapas DGA. https://mapas2.mop.gob.cl",
+  "informes": {
+    "caudal": {
+      "archivo": "caudal_diario_historico.zip",
+      "formato": "diario",
+      "fecha": "FECHA",
+      "valor": "Caudal_diario",
+      "unidad": "m3/s",
+      "descripcion": "Caudal medio diario"
+    },
+    "prep": {
+      "archivo": "prep_diarias_historico.zip",
+      "formato": "diario",
+      "fecha": "FECHA",
+      "valor": "Precipitación_diaria",
+      "unidad": "mm",
+      "descripcion": "Precipitación diaria"
+    },
+    "tmin": {
+      "archivo": "tmin_diarias_historico.zip",
+      "formato": "diario",
+      "fecha": "FECHA",
+      "valor": "TMIN",
+      "unidad": "°C",
+      "descripcion": "Temperatura mínima diaria"
+    },
+    "tmax": {
+      "archivo": "tmax_diarias_historico.zip",
+      "formato": "diario",
+      "fecha": "FECHA",
+      "valor": "TMAX",
+      "unidad": "°C",
+      "descripcion": "Temperatura máxima diaria"
+    },
+    "tmed": {
+      "archivo": "temp_med_diarias_historico.zip",
+      "formato": "diario",
+      "fecha": "FECHA",
+      "valor": "TEMP_MEDIA_DIARIA",
+      "unidad": "°C",
+      "descripcion": "Temperatura media diaria"
+    },
+    "pozos": {
+      "archivo": "niveles_estaticos_pozos_historico/niveles_estaticos_pozos_historico.txt",
+      "formato": "irregular",
+      "fecha": "Fecha",
+      "valor": "Nivel",
+      "unidad": "m",
+      "descripcion": "Profundidad del nivel del agua bajo el terreno"
+    },
+    "sed_integrado": {
+      "archivo": "sedimentos_muestreo_integrado_historico.zip",
+      "formato": "irregular",
+      "fecha": "Fecha",
+      "valor": "Concentración_Ponderada_Diaria",
+      "unidad": "mg/l",
+      "descripcion": "Concentración de sedimentos en suspensión ponderada diaria (muestreo integrado)"
+    },
+    "sed_rutinario": {
+      "archivo": "sedimentos_muestreo_rutinario_historico.zip",
+      "formato": "rutinario",
+      "valor": "Concentración",
+      "unidad": "mg/l",
+      "descripcion": "Concentración de sedimentos en suspensión (muestreo rutinario)"
+    },
+    "calidad": {
+      "archivo": "calidad_agua_historico/calidad_agua_historico.txt",
+      "formato": "calidad",
+      "descripcion": "Calidad de aguas superficiales y subterráneas"
+    }
+  },
+  "agregados_publicados": {
+    "caudal_mensual": "caudal_medio_mensual_historico.zip",
+    "prep_mensual": "prep_mensuales_historico.zip",
+    "prep_max24": "prep_maximas_anuales24_historico.zip",
+    "tmed_mensual": "temp_medias_mensuales_historico.zip"
+  },
+  "muestra": {
+    "carpeta": "servidor/test/muestra/mapas2",
+    "estaciones": [
+      "05410002",
+      "03430007",
+      "04522005",
+      "04302011"
+    ]
+  }
+}
