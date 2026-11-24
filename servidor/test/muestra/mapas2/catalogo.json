@@ -2,7 +2,7 @@
  "fuente": "Mapas DGA",
  "url": "https://mapas2.mop.gob.cl",
  "cita": "Dirección General de Aguas (DGA), Ministerio de Obras Públicas. Mapas DGA. https://mapas2.mop.gob.cl",
- "fecha_descarga": "2026-11-22",
+ "fecha_descarga": "2026-11-24",
  "variables_diarias": {
   "caudal": {
    "unidad": "m³/s",
@@ -1052,7 +1052,7 @@
    "valor_anterior": "mhos/cm",
    "valor_corregido": "µS/cm",
    "regla": "P1",
-   "evidencia": "rótulo aplicado a 83566 mediciones"
+   "evidencia": "rótulo aplicado a 83567 mediciones"
   },
   {
    "variable": "5030",
@@ -1108,7 +1108,7 @@
    "valor_anterior": "Grad. C",
    "valor_corregido": "°C",
    "regla": "P1",
-   "evidencia": "rótulo aplicado a 65970 mediciones"
+   "evidencia": "rótulo aplicado a 65971 mediciones"
   },
   {
    "variable": "5160",
@@ -1116,7 +1116,7 @@
    "valor_anterior": "u. nefel",
    "valor_corregido": "UNT",
    "regla": "P1",
-   "evidencia": "rótulo aplicado a 9022 mediciones"
+   "evidencia": "rótulo aplicado a 9023 mediciones"
   },
   {
    "variable": "5180",
@@ -1132,7 +1132,7 @@
    "valor_anterior": "",
    "valor_corregido": "Clorofila a",
    "regla": "P4",
-   "evidencia": "rótulo aplicado a 8425 mediciones"
+   "evidencia": "rótulo aplicado a 8426 mediciones"
   },
   {
    "variable": "5181",
@@ -1140,7 +1140,7 @@
    "valor_anterior": "",
    "valor_corregido": "µg/l",
    "regla": "P4",
-   "evidencia": "rótulo aplicado a 8425 mediciones"
+   "evidencia": "rótulo aplicado a 8426 mediciones"
   },
   {
    "variable": "5182",
@@ -1164,7 +1164,7 @@
    "valor_anterior": "Oxigeno Disuelto",
    "valor_corregido": "Oxígeno disuelto (porcentaje de saturación)",
    "regla": "P2",
-   "evidencia": "rótulo aplicado a 26792 mediciones"
+   "evidencia": "rótulo aplicado a 26793 mediciones"
   },
   {
    "variable": "6001",
@@ -1172,7 +1172,7 @@
    "valor_anterior": "mg/l O2",
    "valor_corregido": "%",
    "regla": "P2",
-   "evidencia": "rótulo aplicado a 26792 mediciones"
+   "evidencia": "rótulo aplicado a 26793 mediciones"
   },
   {
    "variable": "6020",
@@ -1180,7 +1180,7 @@
    "valor_anterior": "unid. ph",
    "valor_corregido": "unidad de pH",
    "regla": "P1",
-   "evidencia": "rótulo aplicado a 83573 mediciones"
+   "evidencia": "rótulo aplicado a 83574 mediciones"
   },
   {
    "variable": "6183",
