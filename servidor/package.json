@@ -1,6 +1,6 @@
 {
   "name": "mcp-dga-mapas2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Servidor MCP público y sin fines comerciales para consultar los datos de Mapas DGA",
   "author": "Diego Herrera Pino",
   "license": "GPL-3.0-or-later",

@@ -82,6 +82,7 @@ def main():
     herramienta("serie", {"codigo": "05410002", "variable": "calidad"}, error=True)
     herramienta("niveles_pozo", {"codigo": "04522005", "desde": "2023", "hasta": "2024", "mediciones": 10}, contiene=["| 2023-11-07 | 6.24 |"])
     herramienta("calidad_agua", {"codigo": "04302011", "parametro": "temperatura"}, contiene=["49.6", "Temperatura del Agua"])
+    herramienta("niveles_pozo", {"codigo": "04522005", "desde": "2023-11-07", "hasta": "2023-11-07", "mediciones": 1}, contiene=["1 medición entre", "1 nivel estático", "## Última medición"])
     herramienta("correcciones", {"codigo": "03430007", "variable": "tmax"}, contiene=["390.1", "D1 Coma decimal corrida"])
     herramienta("ficha_estacion", {"codigo": "99999999"}, error=True)
     herramienta("serie", {"codigo": "05410002", "variable": "caudal", "desde": "ayer"}, error=True)
